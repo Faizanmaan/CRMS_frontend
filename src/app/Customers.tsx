@@ -95,25 +95,25 @@ const Customers = () => {
     const nonMembers = totalCustomers - totalMembers;
 
     return (
-        <div className="space-y-6 min-h-screen">
-            <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold text-gray-800">Customers</h1>
-                <div className="flex items-center gap-4">
-                    <div className="bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium">
+        <div className="p-4 sm:p-6 space-y-6 min-h-screen">
+            <div className="flex flex-wrap items-center justify-between gap-4">
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-800">Customers</h1>
+                <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="bg-primary-600 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium">
                         {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
                     </div>
                     <div className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
                             <img src={user?.profilePicture || `https://ui-avatars.com/api/?name=${user?.name || 'User'}&background=random`} alt="Profile" />
                         </div>
-                        <span className="text-sm font-medium text-gray-700">{user?.name || 'User'}</span>
+                        <span className="text-sm font-medium text-gray-700 hidden sm:inline">{user?.name || 'User'}</span>
                     </div>
                 </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl p-12 shadow-lg text-white flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary-600">
+                <div className="bg-linear-to-br from-primary-500 to-primary-600 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-lg text-white flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary-600 shrink-0">
                         <Users size={24} />
                     </div>
                     <div>
@@ -123,7 +123,7 @@ const Customers = () => {
                 </div>
 
                 <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white">
+                    <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white shrink-0">
                         <UserPlus size={24} />
                     </div>
                     <div>
@@ -133,7 +133,7 @@ const Customers = () => {
                 </div>
 
                 <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white">
+                    <div className="w-12 h-12 rounded-full bg-green-600 flex items-center justify-center text-white shrink-0">
                         <UserCheck size={24} />
                     </div>
                     <div>
@@ -143,7 +143,7 @@ const Customers = () => {
                 </div>
 
                 <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center text-white">
+                    <div className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center text-white shrink-0">
                         <UserX size={24} />
                     </div>
                     <div>
@@ -154,11 +154,11 @@ const Customers = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 lg:col-span-3">
+                <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 lg:col-span-3">
                     <div className="flex items-center justify-between mb-4">
                         <div>
-                            <p className="text-sm font-medium text-gray-500">Desktop Users</p>
-                            <p className="text-2xl font-bold text-gray-800">
+                            <p className="text-xs sm:text-sm font-medium text-gray-500">Desktop Users</p>
+                            <p className="text-xl sm:text-2xl font-bold text-gray-800">
                                 {(() => {
                                     const desktop = deviceStats.find(s => s.type === 'Desktop')?.count || 0;
                                     const total = deviceStats.reduce((acc, s) => acc + s.count, 0);
@@ -167,8 +167,8 @@ const Customers = () => {
                             </p>
                         </div>
                         <div className="text-right">
-                            <p className="text-sm font-medium text-gray-500">Mobile Users</p>
-                            <p className="text-2xl font-bold text-gray-800">
+                            <p className="text-xs sm:text-sm font-medium text-gray-500">Mobile Users</p>
+                            <p className="text-xl sm:text-2xl font-bold text-gray-800">
                                 {(() => {
                                     const mobile = deviceStats.find(s => s.type === 'Mobile')?.count || 0;
                                     const total = deviceStats.reduce((acc, s) => acc + s.count, 0);
@@ -177,7 +177,7 @@ const Customers = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="w-full h-5 bg-gray-100 rounded gap-2 overflow-hidden flex">
+                    <div className="w-full h-3 sm:h-5 bg-gray-100 rounded gap-1 sm:gap-2 overflow-hidden flex">
                         <div
                             className="h-full bg-blue-500 transition-all duration-500"
                             style={{
@@ -201,11 +201,11 @@ const Customers = () => {
                     </div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 lg:col-span-3">
+                <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 lg:col-span-3">
                     <div className="flex mb-6">
                         <h3 className="font-semibold text-gray-800">Customer Demographic</h3>
                     </div>
-                    <div className="w-full h-[400px] bg-gray-50 rounded-xl overflow-hidden relative flex items-center justify-center">
+                    <div className="w-full h-[300px] sm:h-[400px] bg-gray-50 rounded-xl overflow-hidden relative flex items-center justify-center">
                         <ComposableMap projection="geoAlbersUsa">
                             <ZoomableGroup>
                                 <Geographies geography={geoUrl}>
@@ -255,7 +255,7 @@ const Customers = () => {
                             <button className="w-8 h-8 bg-white text-gray-600 shadow-md rounded-lg flex items-center justify-center hover:bg-gray-50 font-bold text-lg">-</button>
                         </div>
                     </div>
-                    <div className="flex gap-2 mt-6">
+                    <div className="flex flex-wrap gap-4 mt-6">
                         <div className="flex items-center gap-2">
                             <span className="w-3 h-3 rounded-full bg-indigo-900"></span>
                             <span className="text-xs text-gray-500">Majority Members</span>
@@ -283,8 +283,8 @@ const Customers = () => {
                     </div>
                 </div>
 
-                <div className="overflow-x-auto">
-                    <table className="w-full border-separate border-spacing-y-3">
+                <div className="overflow-x-auto pb-4">
+                    <table className="w-full border-separate border-spacing-y-3 min-w-[900px]">
                         <thead>
                             <tr className="">
                                 <th className="py-4 px-6 text-left w-12">
@@ -340,11 +340,11 @@ const Customers = () => {
                     </table>
                 </div>
 
-                <div className="flex items-center justify-between p-6">
-                    <div className="text-sm text-gray-500">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-6">
+                    <div className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
                         Showing <span className="font-medium">{(currentPage - 1) * itemsPerPage + 1}</span> to <span className="font-medium">{Math.min(currentPage * itemsPerPage, customers.length)}</span> of <span className="font-medium">{customers.length}</span> entries
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 sm:gap-2">
                         <button
                             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                             disabled={currentPage === 1}
@@ -352,18 +352,27 @@ const Customers = () => {
                         >
                             <ChevronLeft size={16} />
                         </button>
-                        {[...Array(totalPages)].map((_, i) => (
-                            <button
-                                key={i + 1}
-                                onClick={() => setCurrentPage(i + 1)}
-                                className={`w-8 h-8 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${currentPage === i + 1
-                                    ? 'bg-primary-600 text-white'
-                                    : 'border border-gray-200 text-gray-600 hover:bg-gray-50'
-                                    }`}
-                            >
-                                {i + 1}
-                            </button>
-                        ))}
+                        <div className="flex items-center gap-1">
+                            {[...Array(totalPages)].map((_, i) => {
+                                // Show only a few pages on mobile
+                                if (totalPages > 5 && (i + 1 !== 1 && i + 1 !== totalPages && Math.abs(i + 1 - currentPage) > 1)) {
+                                    if (i + 1 === 2 || i + 1 === totalPages - 1) return <span key={i + 1} className="px-1 text-gray-400">...</span>;
+                                    return null;
+                                }
+                                return (
+                                    <button
+                                        key={i + 1}
+                                        onClick={() => setCurrentPage(i + 1)}
+                                        className={`w-8 h-8 flex items-center justify-center rounded-lg text-xs sm:text-sm font-medium transition-colors ${currentPage === i + 1
+                                            ? 'bg-primary-600 text-white'
+                                            : 'border border-gray-200 text-gray-600 hover:bg-gray-50'
+                                            }`}
+                                    >
+                                        {i + 1}
+                                    </button>
+                                );
+                            })}
+                        </div>
                         <button
                             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                             disabled={currentPage === totalPages}

@@ -14,7 +14,7 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
             <div className="flex items-center gap-4">
                 {showWelcome ? (
                     <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-200 bg-primary-50 flex items-center justify-center">
+                        <div className="lg:w-14 lg:h-14 w-12 h-12 rounded-full overflow-hidden border-2 border-primary-200 bg-primary-50 flex items-center justify-center">
                             {profilePicture ? (
                                 <img
                                     src={profilePicture}
@@ -26,10 +26,10 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
                             )}
                         </div>
                         <div>
-                            <h1 className="text-2xl font-semibold text-gray-800">
+                            <h1 className="lg:text-2xl text-sm font-semibold text-gray-800">
                                 Welcome Back, <span className="text-primary-600">{userName}</span>
                             </h1>
-                            <p className="text-sm text-gray-500">Here are your monthly store updates.</p>
+                            <p className="lg:text-sm text-xs text-gray-500">Here are your monthly store updates.</p>
                         </div>
                     </div>
                 ) : (
@@ -39,7 +39,7 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
 
             <div className="flex items-center gap-4">
                 {!hideSearch && (
-                    <div className="relative">
+                    <div className="hidden lg:block relative">
                         <input
                             type="text"
                             placeholder="Type here"

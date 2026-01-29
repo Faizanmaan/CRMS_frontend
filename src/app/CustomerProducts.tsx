@@ -455,4 +455,3 @@ const CustomerProducts = () => {
 };
 
 export default CustomerProducts;
-

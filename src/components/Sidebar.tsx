@@ -235,13 +235,13 @@ const Sidebar = () => {
 
                     <button
                         onClick={toggleMobileMenu}
-                        className={`p-2.5 rounded-lg transition-colors ${isMobileMenuOpen
+                        className={`py-2 px-3 rounded transition-colors ${isMobileMenuOpen
                             ? 'bg-primary-600 text-white'
-                            : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+                            : 'text-white bg-primary-600'
                             }`}
                         aria-label="Toggle menu"
                     >
-                        {isMobileMenuOpen ? <X size={20} /> : <Menu size={24} />}
+                        {isMobileMenuOpen ? <X size={20} /> : <Menu size={26} />}
                     </button>
                 </div>
             </div>

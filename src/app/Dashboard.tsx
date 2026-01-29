@@ -231,11 +231,11 @@ const Dashboard = () => {
                 searchTerm={searchTerm}
                 onSearchChange={setSearchTerm}
             />
-            <div className="grid grid-cols-1 md:grid-cols-14 gap-6">
-                <div className="col-span-4 md:col-span-10 space-y-6">
-                    <div className="flex flex-col md:flex-row gap-6">
-                        <div className="bg-linear-to-b from-primary-600 to-pipple rounded-lg p-4 text-white flex flex-col items-center justify-between w-[160px] h-[240px] shrink-0">
-                            <div className="relative w-[100px] h-[100px] mt-7">
+            <div className="grid grid-cols-1 lg:grid-cols-14 lg:gap-6">
+                <div className="col-span-4 lg:col-span-10 space-y-6">
+                    <div className="flex flex-col lg:flex-row gap-6">
+                        <div className="bg-linear-to-b from-primary-600 to-pipple rounded-lg lg:p-4 p-6 text-white flex lg:flex-col flex-row items-center justify-between lg:w-[160px] w-full lg:h-[240px] h-full shrink-0">
+                            <div className="relative w-[100px] h-[100px] lg:mt-7 lg:mb-0 my-4">
                                 <svg className="w-full h-full transform -rotate-90 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
                                     <circle
                                         cx="50"
@@ -270,15 +270,15 @@ const Dashboard = () => {
                             </div>
                         </div>
 
-                        <div className="flex-1 bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col md:flex-row gap-6">
+                        <div className="flex-1 bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col xl:flex-row gap-6">
                             <div className="flex-1 space-y-4">
                                 <div>
                                     <h3 className="xl:text-base text-sm font-bold text-gray-800">Monthly Income</h3>
                                     <div className="flex items-enter gap-3 mt-2">
-                                        <p className="xl:text-[24px] text-[19px] font-bold text-gray-900">
+                                        <p className="xl:text-[22px] text-[19px] font-bold text-gray-900">
                                             $ {(stats?.monthlyIncomeStats?.current || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                         </p>
-                                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-bold ${(stats?.monthlyIncomeStats?.growth || 0) >= 0
+                                        <span className={`flex items-center justify-center my-auto px-2 -py-1 h-6 rounded-full text-xs font-bold  ${(stats?.monthlyIncomeStats?.growth || 0) >= 0
                                             ? 'bg-[#e6f4ea] text-lime'
                                             : 'bg-[#fef2f2] text-maron'
                                             }`}>
@@ -359,184 +359,183 @@ const Dashboard = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="overflow-x-auto lg:overflow-visible">
+                        <div className="grid grid-cols-3 gap-6 min-w-[900px] lg:min-w-0">
+                            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col h-full">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center text-white">
+                                        <TrendingUp size={14} />
+                                    </div>
+                                </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col h-full">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center text-white">
-                                    <TrendingUp size={14} />
+                                <h3 className="text-[15px] font-semibold text-gray-500 mb-3">Total Profit</h3>
+
+                                <div className="flex items-center justify-between mb-4">
+                                    <p className="text-[22px] font-bold text-[#1f2937]">
+                                        {stats?.totalProfit || "$ 0.00"}
+                                    </p>
+                                    <span className="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] font-bold bg-[#e6f4ea] text-[#1e8e3e]">
+                                        ↑ 3.4%
+                                    </span>
+                                </div>
+
+                                <div className="flex-1 max-h-[77px] mt-auto">
+                                    <Line
+                                        data={{
+                                            labels: stats?.profitHistory?.map((h) => h.date) || ['', '', '', '', '', '', ''],
+                                            datasets: [{
+                                                data: stats?.profitHistory?.map((h) => h.profit) || [0, 0, 0, 0, 0, 0, 0],
+                                                borderColor: '#65a30d',
+                                                backgroundColor: '#65a30d',
+                                                borderWidth: 2,
+                                                pointRadius: 4,
+                                                pointBackgroundColor: '#65a30d',
+                                                pointBorderColor: '#fff',
+                                                pointBorderWidth: 2,
+                                                tension: 0.4,
+                                            }]
+                                        }}
+                                        options={{
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+                                            plugins: {
+                                                legend: { display: false },
+                                                tooltip: { enabled: true }
+                                            },
+                                            scales: {
+                                                x: {
+                                                    grid: { color: '#f1f5f9' },
+                                                    ticks: { display: false }
+                                                },
+                                                y: {
+                                                    grid: { color: '#f1f5f9' },
+                                                    ticks: { display: false }
+                                                }
+                                            }
+                                        }}
+                                    />
                                 </div>
                             </div>
 
-                            <h3 className="text-[15px] font-semibold text-gray-500 mb-3">Total Profit</h3>
+                            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col h-full">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center text-white">
+                                        <TrendingDown size={14} />
+                                    </div>
+                                </div>
 
-                            <div className="flex items-center justify-between mb-4">
-                                <p className="text-2xl font-bold text-[#1f2937]">
-                                    {stats?.totalProfit || "$ 0.00"}
-                                </p>
-                                <span className="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] font-bold bg-[#e6f4ea] text-[#1e8e3e]">
-                                    ↑ 3.4%
-                                </span>
-                            </div>
+                                <h3 className="text-[15px] font-bold text-gray-500 mb-3">Total Expenses</h3>
 
-                            <div className="flex-1 max-h-[77px] mt-auto">
-                                <Line
-                                    data={{
-                                        labels: stats?.profitHistory?.map((h) => h.date) || ['', '', '', '', '', '', ''],
-                                        datasets: [{
-                                            data: stats?.profitHistory?.map((h) => h.profit) || [0, 0, 0, 0, 0, 0, 0],
-                                            borderColor: '#65a30d',
-                                            backgroundColor: '#65a30d',
-                                            borderWidth: 2,
-                                            pointRadius: 4,
-                                            pointBackgroundColor: '#65a30d',
-                                            pointBorderColor: '#fff',
-                                            pointBorderWidth: 2,
-                                            tension: 0.4,
-                                        }]
-                                    }}
-                                    options={{
-                                        responsive: true,
-                                        maintainAspectRatio: false,
-                                        plugins: {
-                                            legend: { display: false },
-                                            tooltip: { enabled: true }
-                                        },
-                                        scales: {
-                                            x: {
-                                                grid: { color: '#f1f5f9' },
-                                                ticks: { display: false }
+                                <div className="flex items-center justify-between mb-4">
+                                    <p className="text-[22px] font-bold text-[#1f2937]">
+                                        {stats?.totalExpenses || "$ 0.00"}
+                                    </p>
+                                    <span className="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] font-bold bg-[#fef2f2] text-maron">
+                                        ↓ 2.6%
+                                    </span>
+                                </div>
+
+                                <div className="flex-1 max-h-[77px] mt-auto">
+                                    <Line
+                                        data={{
+                                            labels: stats?.expensesHistory?.map((h) => h.date) || ['', '', '', '', '', '', ''],
+                                            datasets: [{
+                                                data: stats?.expensesHistory?.map((h) => h.expenses) || [0, 0, 0, 0, 0, 0, 0],
+                                                borderColor: '#ef4444',
+                                                backgroundColor: '#ef4444',
+                                                borderWidth: 2,
+                                                pointRadius: 4,
+                                                pointBackgroundColor: '#ef4444',
+                                                pointBorderColor: '#fff',
+                                                pointBorderWidth: 2,
+                                                tension: 0.4,
+                                            }]
+                                        }}
+                                        options={{
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+                                            plugins: {
+                                                legend: { display: false },
+                                                tooltip: { enabled: true }
                                             },
-                                            y: {
-                                                grid: { color: '#f1f5f9' },
-                                                ticks: { display: false }
+                                            scales: {
+                                                x: {
+                                                    grid: { color: '#f1f5f9' },
+                                                    ticks: { display: false }
+                                                },
+                                                y: {
+                                                    grid: { color: '#f1f5f9' },
+                                                    ticks: { display: false }
+                                                }
                                             }
-                                        }
-                                    }}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col h-full">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center text-white">
-                                    <TrendingDown size={14} />
+                                        }}
+                                    />
                                 </div>
                             </div>
 
-                            <h3 className="text-[15px] font-bold text-gray-500 mb-3">Total Expenses</h3>
-
-                            <div className="flex items-center justify-between mb-4">
-                                <p className="text-2xl font-bold text-[#1f2937]">
-                                    {stats?.totalExpenses || "$ 0.00"}
-                                </p>
-                                <span className="inline-flex items-center px-2 py-[2px] rounded-full text-[10px] font-bold bg-[#fef2f2] text-maron">
-                                    ↓ 2.6%
-                                </span>
-                            </div>
-
-                            <div className="flex-1 max-h-[77px] mt-auto">
-                                <Line
-                                    data={{
-                                        labels: stats?.expensesHistory?.map((h) => h.date) || ['', '', '', '', '', '', ''],
-                                        datasets: [{
-                                            data: stats?.expensesHistory?.map((h) => h.expenses) || [0, 0, 0, 0, 0, 0, 0],
-                                            borderColor: '#ef4444',
-                                            backgroundColor: '#ef4444',
-                                            borderWidth: 2,
-                                            pointRadius: 4,
-                                            pointBackgroundColor: '#ef4444',
-                                            pointBorderColor: '#fff',
-                                            pointBorderWidth: 2,
-                                            tension: 0.4,
-                                        }]
-                                    }}
-                                    options={{
-                                        responsive: true,
-                                        maintainAspectRatio: false,
-                                        plugins: {
-                                            legend: { display: false },
-                                            tooltip: { enabled: true }
-                                        },
-                                        scales: {
-                                            x: {
-                                                grid: { color: '#f1f5f9' },
-                                                ticks: { display: false }
-                                            },
-                                            y: {
-                                                grid: { color: '#f1f5f9' },
-                                                ticks: { display: false }
-                                            }
-                                        }
-                                    }}
-                                />
-                            </div>
-                        </div>
-
-                        <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col h-full">
-                            <div className="flex items-center gap-3 mb-3">
-                                <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center text-white">
-                                    <span className="text-xl font-bold">👥</span>
+                            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col h-full">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="w-7 h-7 rounded-full bg-primary-600 flex items-center justify-center text-white">
+                                        <span className="text-xl font-bold">👥</span>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <h3 className="text-[15px] font-bold text-gray-500 mb-3">New Customers</h3>
+                                <h3 className="text-[15px] font-bold text-gray-500 mb-3">New Customers</h3>
 
-                            <div className="flex items-center justify-between mb-4">
-                                <p className="text-2xl font-bold text-[#1f2937]">
-                                    {stats?.newCustomersStats?.current?.toLocaleString() || "0"}
-                                </p>
-                                <span className={`inline-flex items-center px-2 py-[2px] rounded-full text-[10px] font-bold ${(stats?.newCustomersStats?.growth || 0) >= 0
-                                    ? 'bg-[#e0f2fe] text-ocean'
-                                    : 'bg-[#fef2f2] text-maron'
-                                    }`}>
-                                    {(stats?.newCustomersStats?.growth || 0) >= 0 ? '↑' : '↓'} {Math.abs(stats?.newCustomersStats?.growth || 0)}%
-                                </span>
-                            </div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <p className="text-[22px] font-bold text-[#1f2937]">
+                                        {stats?.newCustomersStats?.current?.toLocaleString() || "0"}
+                                    </p>
+                                    <span className={`inline-flex items-center px-2 py-[2px] rounded-full text-[10px] font-bold ${(stats?.newCustomersStats?.growth || 0) >= 0
+                                        ? 'bg-[#e0f2fe] text-ocean'
+                                        : 'bg-[#fef2f2] text-maron'
+                                        }`}>
+                                        {(stats?.newCustomersStats?.growth || 0) >= 0 ? '↑' : '↓'} {Math.abs(stats?.newCustomersStats?.growth || 0)}%
+                                    </span>
+                                </div>
 
-                            <div className="flex-1 max-h-[77px] mt-auto">
-                                <Line
-                                    data={{
-                                        labels: stats?.newCustomersStats?.history?.map((h) => h.date) || ['', '', '', '', '', '', ''],
-                                        datasets: [{
-                                            data: stats?.newCustomersStats?.history?.map((h) => h.count) || [0, 0, 0, 0, 0, 0, 0],
-                                            borderColor: '#3b82f6',
-                                            backgroundColor: '#3b82f6',
-                                            borderWidth: 2,
-                                            pointRadius: 4,
-                                            pointBackgroundColor: '#3b82f6',
-                                            pointBorderColor: '#fff',
-                                            pointBorderWidth: 2,
-                                            tension: 0.4,
-                                        }]
-                                    }}
-                                    options={{
-                                        responsive: true,
-                                        maintainAspectRatio: false,
-                                        plugins: {
-                                            legend: { display: false },
-                                            tooltip: { enabled: true }
-                                        },
-                                        scales: {
-                                            x: {
-                                                grid: { color: '#f1f5f9' },
-                                                ticks: { display: false }
+                                <div className="flex-1 max-h-[77px] mt-auto">
+                                    <Line
+                                        data={{
+                                            labels: stats?.newCustomersStats?.history?.map((h) => h.date) || ['', '', '', '', '', '', ''],
+                                            datasets: [{
+                                                data: stats?.newCustomersStats?.history?.map((h) => h.count) || [0, 0, 0, 0, 0, 0, 0],
+                                                borderColor: '#3b82f6',
+                                                backgroundColor: '#3b82f6',
+                                                borderWidth: 2,
+                                                pointRadius: 4,
+                                                pointBackgroundColor: '#3b82f6',
+                                                pointBorderColor: '#fff',
+                                                pointBorderWidth: 2,
+                                                tension: 0.4,
+                                            }]
+                                        }}
+                                        options={{
+                                            responsive: true,
+                                            maintainAspectRatio: false,
+                                            plugins: {
+                                                legend: { display: false },
+                                                tooltip: { enabled: true }
                                             },
-                                            y: {
-                                                grid: { color: '#f1f5f9' },
-                                                ticks: { display: false }
+                                            scales: {
+                                                x: {
+                                                    grid: { color: '#f1f5f9' },
+                                                    ticks: { display: false }
+                                                },
+                                                y: {
+                                                    grid: { color: '#f1f5f9' },
+                                                    ticks: { display: false }
+                                                }
                                             }
-                                        }
-                                    }}
-                                />
+                                        }}
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
-                <div className="col-span-1 md:col-span-4 flex flex-col">
+                <div className="col-span-1 lg:col-span-4 flex flex-col">
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex-1">
                         <h2 className="text-md font-semibold text-gray-800 mb-4">Best Selling Products</h2>
                         <div className="border-b border-gray-400 mb-3" />
@@ -587,8 +586,8 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-14 gap-6 mt-6">
-                <div className="col-span-1 md:col-span-10 space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-14 gap-6 mt-6">
+                <div className="col-span-1 lg:col-span-10 space-y-6">
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                         <div className="flex items-center justify-between mb-6">
                             <h2 className="text-lg font-semibold text-gray-800">New Customers</h2>
@@ -687,7 +686,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="col-span-1 md:col-span-4 space-y-6">
+                <div className="col-span-1 lg:col-span-4 space-y-6">
                     <div className="bg-white rounded-2xl px-4 py-6 shadow-sm border border-gray-100 flex flex-col h-full">
                         <h2 className="text-base font-semibold text-gray-800 mb-4">City Order Statistics</h2>
                         <div className="border-b border-gray-400 mb-3" />
