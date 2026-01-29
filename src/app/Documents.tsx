@@ -244,7 +244,7 @@ const Documents = () => {
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
                 <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-b border-gray-100">
-                    <div className="flex items-center">
+                    <div className="flex items-center md:mx-0 mx-auto">
                         {tabs.map((tab) => (
                             <button
                                 key={tab}
@@ -262,46 +262,47 @@ const Documents = () => {
                         ))}
                     </div>
 
-                    <div className="flex items-center gap-3">
+                    <div className="flex md:flex-row flex-col items-center justify-center md:mx-0 mx-auto gap-3">
                         <div className="flex items-center">
                             <input
                                 type="text"
                                 placeholder="Type here"
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-48 pl-4 pr-4 py-2 text-sm border border-r-0 border-gray-200 rounded-l-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400"
+                                className="md:w-48 w-30 pl-4 pr-4 py-2 text-sm border border-r-0 border-gray-200 rounded-l-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400"
                             />
                             <button className="px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-r-sm hover:bg-primary-700 transition-colors flex items-center gap-2">
                                 <Search size={16} />
                                 Search
                             </button>
                         </div>
+                        <div className="flex sm:flex-row flex-col items-center justify-center w-full gap-2">
+                            <button
+                                onClick={handleDownloadBulk}
+                                disabled={selectedIds.length === 0}
+                                className={`flex items-center justify-center gap-2 px-4 py-2 text-sm w-full font-medium border rounded-sm transition-colors ${selectedIds.length > 0
+                                    ? 'text-primary-600 border-primary-600 hover:bg-primary-100'
+                                    : 'text-primary-600 border-primary-600 cursor-not-allowed'
+                                    }`}
+                            >
+                                Download {selectedIds.length > 0 && `(${selectedIds.length})`}
+                            </button>
 
-                        <button
-                            onClick={handleDownloadBulk}
-                            disabled={selectedIds.length === 0}
-                            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-sm transition-colors ${selectedIds.length > 0
-                                ? 'text-primary-600 border-primary-600 hover:bg-primary-100'
-                                : 'text-primary-600 border-primary-600 cursor-not-allowed'
-                                }`}
-                        >
-                            Download {selectedIds.length > 0 && `(${selectedIds.length})`}
-                        </button>
-
-                        <button
-                            onClick={handleDeleteBulk}
-                            disabled={selectedIds.length === 0}
-                            className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border rounded-sm transition-colors ${selectedIds.length > 0
-                                ? 'text-primary-600 border-primary-600 hover:bg-primary-100'
-                                : 'text-primary-600 border-primary-600 cursor-not-allowed'
-                                }`}
-                        >
-                            Delete {selectedIds.length > 0 && `(${selectedIds.length})`}
-                        </button>
+                            <button
+                                onClick={handleDeleteBulk}
+                                disabled={selectedIds.length === 0}
+                                className={`flex items-center justify-center gap-2 px-4 py-2 text-sm w-full font-medium border rounded-sm transition-colors ${selectedIds.length > 0
+                                    ? 'text-primary-600 border-primary-600 hover:bg-primary-100'
+                                    : 'text-primary-600 border-primary-600 cursor-not-allowed'
+                                    }`}
+                            >
+                                Delete {selectedIds.length > 0 && `(${selectedIds.length})`}
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto w-full">
                     {isLoading ? (
                         <div className="flex items-center justify-center py-12">
                             <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin" />
@@ -312,9 +313,9 @@ const Documents = () => {
                             <p className="text-gray-500">No documents found.</p>
                         </div>
                     ) : (
-                        <table className="w-full">
+                        <table className="min-w-full">
                             <thead>
-                                <tr className="bg-primary-50">
+                                <tr className="bg-primary-100 whitespace-nowrap">
                                     <th className="text-left py-4 px-6 text-sm font-semibold text-gray-900 rounded-l-xl">
                                         <input
                                             type="checkbox"
@@ -333,7 +334,7 @@ const Documents = () => {
                             </thead>
                             <tbody className="divide-y divide-gray-50">
                                 {filteredDocuments.map((doc) => (
-                                    <tr key={doc.id} className={`hover:bg-gray-50 transition-colors ${selectedIds.includes(doc.id) ? 'bg-primary-50/30' : ''}`}>
+                                    <tr key={doc.id} className={`hover:bg-gray-50 transition-colors whitespace-nowrap ${selectedIds.includes(doc.id) ? 'bg-primary-50/30' : ''}`}>
                                         <td className="py-4 px-6">
                                             <input
                                                 type="checkbox"

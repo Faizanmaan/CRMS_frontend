@@ -95,8 +95,8 @@ const Customers = () => {
     const nonMembers = totalCustomers - totalMembers;
 
     return (
-        <div className="p-4 sm:p-6 space-y-6 min-h-screen">
-            <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="p-4 sm:p-6 space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <h1 className="text-xl sm:text-2xl font-bold text-gray-800">Customers</h1>
                 <div className="flex items-center gap-3 sm:gap-4">
                     <div className="bg-primary-600 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium">
@@ -111,7 +111,7 @@ const Customers = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-linear-to-br from-primary-500 to-primary-600 rounded-2xl p-6 sm:p-8 lg:p-12 shadow-lg text-white flex items-center gap-4">
                     <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary-600 shrink-0">
                         <Users size={24} />
@@ -283,8 +283,8 @@ const Customers = () => {
                     </div>
                 </div>
 
-                <div className="overflow-x-auto pb-4">
-                    <table className="w-full border-separate border-spacing-y-3 min-w-[900px]">
+                <div className="overflow-x-auto md:overflow-visible -mx-4 md:mx-0 pb-4">
+                    <table className="w-full border-separate border-spacing-y-3 min-w-[900px] md:min-w-0">
                         <thead>
                             <tr className="">
                                 <th className="py-4 px-6 text-left w-12">

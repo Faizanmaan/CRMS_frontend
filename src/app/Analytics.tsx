@@ -523,9 +523,9 @@ const Analytics = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col md:flex-row gap-6 mb-6">
-                <div className="w-full md:w-4/6">
-                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="flex flex-col md:flex-row items-stretch gap-6 mb-6">
+                <div className="w-full md:w-6/10">
+                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full flex flex-col">
                         <div className="flex items-center justify-between mb-8">
                             <h2 className="text-lg font-semibold text-gray-800">
                                 Sales per Country <span className="text-sm font-normal text-gray-400">({analyticsData?.totalOrdersCount?.toLocaleString() || '0'} Sales)</span>
@@ -569,9 +569,9 @@ const Analytics = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full md:w-2/6">
+                <div className="w-full md:w-4/10">
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full flex flex-col">
-                        <div className="flex items-center justify-between mb-6">
+                        <div className="flex items-center justify-between border-b border-gray-200 pb-4">
                             <h2 className="text-lg font-semibold text-gray-800">Sales History</h2>
                             <div className="flex items-center border border-gray-100 rounded-lg overflow-hidden shadow-sm">
                                 <button
@@ -581,7 +581,7 @@ const Analytics = () => {
                                 >
                                     <ChevronLeft size={18} />
                                 </button>
-                                {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => i + 1).map((page) => (
+                                {Array.from({ length: Math.min(totalPages, 3) }, (_, i) => i + 1).map((page) => (
                                     <button
                                         key={page}
                                         onClick={() => setSalesPage(page)}
@@ -603,8 +603,8 @@ const Analytics = () => {
                             </div>
                         </div>
 
-                        <div className={`border-t border-gray-50 pt-6 transition-opacity duration-200 ${isSalesLoading ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}>
-                            <p className="text-xs font-bold text-gray-400 tracking-wider mb-6">RECENT</p>
+                        <div className={` border-gray-50 pt-3 transition-opacity duration-200 ${isSalesLoading ? 'opacity-50 pointer-events-none' : 'opacity-100'}`}>
+                            <p className="text-xs font-bold text-gray-400 tracking-wider mb-4">RECENT</p>
 
                             <div className="space-y-6">
                                 {(analyticsData?.newCustomers || []).map((sale, index: number) => (
@@ -614,15 +614,15 @@ const Analytics = () => {
                                                 <img
                                                     src={sale.avatar}
                                                     alt={sale.name}
-                                                    className="w-14 h-14 rounded-full object-cover border-2 border-white shadow-sm"
+                                                    className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
                                                 />
                                             </div>
                                             <div>
-                                                <p className="text-[15px] font-bold text-gray-900 leading-tight">{sale.name}</p>
+                                                <p className="text-[15px] font-normal text-gray-900 leading-tight">{sale.name}</p>
                                                 <p className="text-sm text-gray-400 font-medium mt-0.5">{sale.country}</p>
                                             </div>
                                         </div>
-                                        <span className="text-[15px] font-bold text-gray-700">{sale.total}</span>
+                                        <span className="text-[15px] font-normal text-gray-700">{sale.total}</span>
                                     </div>
                                 ))}
                                 {(!analyticsData?.newCustomers || analyticsData.newCustomers.length === 0) && !isLoading && !isSalesLoading && (

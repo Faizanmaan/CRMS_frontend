@@ -212,7 +212,7 @@ const CustomerDocuments = () => {
                     </button>
                 </div>
 
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto w-full">
                     {isLoading ? (
                         <div className="flex items-center justify-center py-12">
                             <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin" />
@@ -223,9 +223,9 @@ const CustomerDocuments = () => {
                             <p className="text-gray-500">No documents yet. Add your first document!</p>
                         </div>
                     ) : (
-                        <table className="w-full">
+                        <table className="min-w-full">
                             <thead>
-                                <tr className="bg-gray-50">
+                                <tr className="bg-gray-50 whitespace-nowrap">
                                     <th className="text-left py-3 px-4 text-sm font-medium text-gray-500">Name</th>
                                     <th className="text-left py-3 px-4 text-sm font-medium text-gray-500">Type</th>
                                     <th className="text-left py-3 px-4 text-sm font-medium text-gray-500">Version</th>
@@ -236,7 +236,7 @@ const CustomerDocuments = () => {
                             </thead>
                             <tbody>
                                 {documents.map((doc) => (
-                                    <tr key={doc.id} className="border-b border-gray-50 hover:bg-gray-50">
+                                    <tr key={doc.id} className="border-b border-gray-50 hover:bg-gray-50 whitespace-nowrap">
                                         <td className="py-3 px-4">
                                             <div className="flex items-center gap-3">
                                                 <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${getTypeColor(doc.type)}`}>

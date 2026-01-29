@@ -141,8 +141,8 @@ const CustomerProducts = () => {
 
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100">
                 {/* Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-100">
-                    <div className="flex items-center gap-6">
+                <div className="flex sm:flex-row flex-col items-center justify-between p-6 border-b border-gray-100">
+                    <div className="flex items-center gap-6 sm:mb-0 mb-4">
                         <div className="flex items-center gap-2">
                             <Package size={20} className="text-primary-600" />
                             <span className="text-sm text-gray-500">{selections.length} products selected</span>

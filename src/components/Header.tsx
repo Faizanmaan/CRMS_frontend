@@ -10,8 +10,8 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
     const profilePicture = user?.profilePicture;
 
     return (
-        <header className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-4">
+        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div className="flex items-center gap-4 order-2 sm:order-1">
                 {showWelcome ? (
                     <div className="flex items-center gap-4">
                         <div className="lg:w-14 lg:h-14 w-12 h-12 rounded-full overflow-hidden border-2 border-primary-200 bg-primary-50 flex items-center justify-center">
@@ -33,11 +33,11 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
                         </div>
                     </div>
                 ) : (
-                    <h1 className="text-2xl font-semibold text-gray-800">{title}</h1>
+                    <h1 className="lg:text-2xl md:text-xl text-lg font-semibold text-gray-800">{title}</h1>
                 )}
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 order-1 sm:order-2 justify-end">
                 {!hideSearch && (
                     <div className="hidden lg:block relative">
                         <input
@@ -60,7 +60,7 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
                             <div className="relative">
                                 <button
                                     onClick={() => setShowDateDropdown(!showDateDropdown)}
-                                    className="flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-700 rounded-lg text-sm font-medium hover:bg-primary-200 transition-colors"
+                                    className="flex items-center gap-1 px-2 py-2 bg-primary-100 text-primary-700 rounded-lg md:text-sm text-xs font-medium hover:bg-primary-200 transition-colors"
                                 >
                                     <Calendar size={16} />
                                     {dateRange || 'Select Date'}
@@ -68,7 +68,7 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
                                 </button>
 
                                 {showDateDropdown && (
-                                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
+                                    <div className="absolute right-0 mt-2 w-40 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
                                         {[
                                             { label: 'Last 7 Days', value: '7days' },
                                             { label: 'Last 30 Days', value: '30days' },
@@ -81,7 +81,7 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
                                                     onDateChange?.(option.value);
                                                     setShowDateDropdown(false);
                                                 }}
-                                                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
+                                                className="w-full text-left px-2 py-2 md:text-sm text-xs text-gray-700 hover:bg-primary-50 hover:text-primary-700 transition-colors"
                                             >
                                                 {option.label}
                                             </button>
@@ -91,7 +91,7 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
                             </div>
                         )}
                         <div className="flex items-center gap-2">
-                            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-200 bg-primary-50 flex items-center justify-center">
+                            <div className="md:w-10 md:h-10 w-8 h-8 rounded-full overflow-hidden border-2 border-primary-200 bg-primary-50 flex items-center justify-center">
                                 {profilePicture ? (
                                     <img
                                         src={profilePicture}
@@ -102,7 +102,7 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
                                     <UserIcon className="w-6 h-6 text-primary-400" />
                                 )}
                             </div>
-                            <span className="text-sm font-medium text-gray-700">{userName}</span>
+                            <span className="text-xs md:text-sm font-medium text-gray-700">{userName}</span>
                         </div>
                     </div>
                 )}

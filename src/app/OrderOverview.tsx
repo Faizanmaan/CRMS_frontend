@@ -289,43 +289,43 @@ const OrderOverview = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
                 <div className="lg:col-span-8 space-y-6">
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h2 className="text-lg font-semibold text-gray-800 mb-6">Sales Statistic</h2>
-
-                        <div className="grid grid-cols-3 gap-4 mb-8 border-b border-gray-100 pb-6">
-                            <div className="relative pr-4">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <div className="w-6 h-6 rounded-full bg-blue-500 shrink-0"></div>
-                                    <span className="text-sm font-medium text-gray-500">Total Revenue</span>
+                        <h2 className="text-base md:text-lg font-semibold text-gray-800 mb-6">Sales Statistic</h2>
+                        <div className="overflow-x-auto md:overflow-visible -mx-4 md:mx-0">
+                            <div className="grid grid-cols-3 gap-4 min-w-[600px] md:min-w-0 mb-8 border-b border-gray-100 pb-6">
+                                <div className="relative pr-4">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="md:w-6 md:h-6 h-4 w-4 rounded-full bg-blue-500 shrink-0"></div>
+                                        <span className="md:text-sm text-xs font-medium text-gray-500">Total Revenue</span>
+                                    </div>
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="md:text-2xl text-lg font-bold text-gray-900">{salesStatistic?.totalRevenue || '$ 0.00'}</span>
+                                        <span className="text-xs text-gray-400">Orders</span>
+                                    </div>
+                                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-12 bg-gray-100"></div>
                                 </div>
-                                <div className="flex items-baseline gap-2">
-                                    <span className="text-2xl font-bold text-gray-900">{salesStatistic?.totalRevenue || '$ 0.00'}</span>
-                                    <span className="text-xs text-gray-400">Orders</span>
+                                <div className="relative px-4">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="md:w-6 md:h-6 h-4 w-4 rounded-full bg-green-600 shrink-0"></div>
+                                        <span className="md:text-sm text-xs font-medium text-gray-500">Total Sales</span>
+                                    </div>
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="md:text-2xl text-lg font-bold text-gray-900">{salesStatistic?.totalSales || '0'}</span>
+                                        <span className="text-xs text-gray-400">Products</span>
+                                    </div>
+                                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-12 bg-gray-100"></div>
                                 </div>
-                                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-12 bg-gray-100"></div>
-                            </div>
-                            <div className="relative px-4">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <div className="w-6 h-6 rounded-full bg-green-600 shrink-0"></div>
-                                    <span className="text-sm font-medium text-gray-500">Total Sales</span>
-                                </div>
-                                <div className="flex items-baseline gap-2">
-                                    <span className="text-2xl font-bold text-gray-900">{salesStatistic?.totalSales || '0'}</span>
-                                    <span className="text-xs text-gray-400">Products</span>
-                                </div>
-                                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-px h-12 bg-gray-100"></div>
-                            </div>
-                            <div className="pl-4">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <div className="w-6 h-6 rounded-full bg-purple-500 shrink-0"></div>
-                                    <span className="text-sm font-medium text-gray-500">Total Views</span>
-                                </div>
-                                <div className="flex items-baseline gap-2">
-                                    <span className="text-2xl font-bold text-gray-900">{salesStatistic?.totalViews || '0'}</span>
-                                    <span className="text-xs text-gray-400">Views</span>
+                                <div className="pl-4">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="md:w-6 md:h-6 h-4 w-4 rounded-full bg-purple-500 shrink-0"></div>
+                                        <span className="md:text-sm text-xs font-medium text-gray-500">Total Views</span>
+                                    </div>
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="md:text-2xl text-lg font-bold text-gray-900">{salesStatistic?.totalViews || '0'}</span>
+                                        <span className="text-xs text-gray-400">Views</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
                         <div className="h-[300px] w-full">
                             {salesStatistic ? (
                                 <Line
@@ -441,15 +441,16 @@ const OrderOverview = () => {
                     </div>
 
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h2 className="text-lg font-semibold text-gray-800 mb-4">Best Selling Products</h2>
-                        <div className="overflow-x-auto">
-                            <table className="w-full">
+                        <h2 className="md:text-lg text-base font-semibold text-gray-800 mb-2">Best Selling Products</h2>
+                        <div className='border-b border-gray-300 mb-4'></div>
+                        <div className="overflow-x-auto md:overflow-visible">
+                            <table className="w-full min-w-[640px] md:min-w-0">
                                 <thead>
-                                    <tr className="border-b border-gray-100">
-                                        <th className="text-left py-3 px-4 text-sm font-medium text-gray-500">Product Name</th>
-                                        <th className="text-left py-3 px-4 text-sm font-medium text-gray-500">Total Order</th>
-                                        <th className="text-left py-3 px-4 text-sm font-medium text-gray-500">Status</th>
-                                        <th className="text-left py-3 px-4 text-sm font-medium text-gray-500">Price</th>
+                                    <tr className="bg-primary-100 text-black">
+                                        <th className="text-left py-3 px-4 md:text-sm text-xs font-medium rounded-l">Product Name</th>
+                                        <th className="text-left py-3 px-4 md:text-sm text-xs font-medium">Total Order</th>
+                                        <th className="text-left py-3 px-4 md:text-sm text-xs font-medium">Status</th>
+                                        <th className="text-left py-3 px-4 md:text-sm text-xs font-medium rounded-r">Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -487,7 +488,7 @@ const OrderOverview = () => {
                                             <tr key={index} className="border-b border-gray-50 hover:bg-gray-50">
                                                 <td className="py-3 px-4">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
+                                                        <div className="md:w-10 md:h-10 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
                                                             {product.image ? (
                                                                 <img
                                                                     src={product.image}
@@ -499,20 +500,20 @@ const OrderOverview = () => {
                                                             )}
                                                         </div>
                                                         <div>
-                                                            <p className="text-sm font-medium text-primary-600">{product.name}</p>
-                                                            <p className="text-xs text-gray-400">{product.brand}</p>
+                                                            <p className="md:text-sm text-xs font-medium text-primary-600">{product.name}</p>
+                                                            <p className="md:text-xs text-[10px] text-gray-400">{product.brand}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td className="py-3 px-4">
                                                     <div>
-                                                        <p className="text-sm font-medium text-gray-700">{product.totalSold} pcs</p>
-                                                        <p className="text-xs text-gray-400">Sold</p>
+                                                        <p className="md:text-sm text-xs font-medium text-gray-700">{product.totalSold} pcs</p>
+                                                        <p className="md:text-xs text-[10px] text-gray-400">Sold</p>
                                                     </div>
                                                 </td>
                                                 <td className="py-3 px-4">
                                                     <span
-                                                        className={`inline-flex px-2.5 py-1 rounded-full text-xs font-medium ${product.status === 'Available'
+                                                        className={`inline-flex px-2.5 py-1 rounded-full md:text-xs text-[10px] font-medium ${product.status === 'Available'
                                                             ? 'bg-green-100 text-green-700'
                                                             : 'bg-red-100 text-red-700'
                                                             }`}
@@ -520,7 +521,7 @@ const OrderOverview = () => {
                                                         {product.status}
                                                     </span>
                                                 </td>
-                                                <td className="py-3 px-4 text-sm text-gray-700">{product.price}</td>
+                                                <td className="py-3 px-4 md:text-sm text-xs text-gray-700">{product.price}</td>
                                             </tr>
                                         ))
                                     )}
@@ -532,7 +533,7 @@ const OrderOverview = () => {
 
                 <div className="lg:col-span-4 space-y-6">
                     <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                        <h2 className="text-lg font-semibold text-gray-800 mb-4">Country Sales Statistics</h2>
+                        <h2 className="md:text-lg text-base font-semibold text-gray-800 mb-4">Country Sales Statistics</h2>
 
                         <div
                             className="bg-gray-50 rounded-xl overflow-hidden relative mb-6 border border-gray-100"
@@ -571,7 +572,7 @@ const OrderOverview = () => {
 
                         <div className="flex items-center justify-between mb-6">
                             <div>
-                                <p className="text-3xl font-bold text-gray-800">
+                                <p className="md:text-2xl text-xl font-bold text-gray-800">
                                     {totalOrders.toLocaleString()} <span className="text-sm font-normal text-gray-500">Orders</span>
                                 </p>
                                 <p className="text-xs text-gray-400">Sales from {dateRangeLabel}</p>

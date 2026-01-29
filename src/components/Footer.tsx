@@ -7,62 +7,72 @@ const Footer = () => {
         { label: 'Customers', path: '/customers' },
         { label: 'Order Overview', path: '/orders' },
         { label: 'Analytics', path: '/analytics' },
-        { label: 'Documents', path: '/documents' },
+        { label: 'Accounting', path: '/accounting' },
     ];
 
     return (
-        <footer className="bg-white border-t border-gray-100 mt-auto">
-            <div className="max-w-[100%] mx-auto px-10 py-8">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
-                    <div>
-                        <Link to="/" className="flex items-center gap-1 mb-2">
-                            <span className="text-xl font-bold text-primary-700">swift</span>
-                            <span className="text-xl font-bold text-gray-800">CRM</span>
+        <footer className="bg-white mt-auto">
+            <div className="max-w-full mx-auto px-10 py-8">
+                <div className="flex flex-col md:flex-row justify-between md:items-center items-start gap-6 mb-6">
+
+                    {/* Left Side: Logo + Tagline */}
+                    <div className="flex flex-col items-start gap-2">
+                        <Link to="/" className="flex items-center gap-0.5">
+                            <span className="text-2xl font-bold text-gray-800">swift</span>
+                            <span className="text-2xl font-bold text-[#8B5CF6]">CRM</span>
                         </Link>
-                        <p className="text-sm text-gray-500">
+
+                        <p className="text-sm text-gray-600 text-center md:text-left">
                             Crafting Connections, One Customer at a Time.
                         </p>
                     </div>
 
-                    <nav className="flex flex-wrap gap-6">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.path}
-                                to={link.path}
-                                className="text-sm text-gray-600 hover:text-primary-600 transition-colors"
-                            >
-                                {link.label}
-                            </Link>
-                        ))}
-                    </nav>
+                    {/* Right Side: Nav Links + Social Icons */}
+                    <div className="flex flex-col items-start md:items-end gap-6">
 
-                    <div className="flex items-center gap-3">
-                        <a
-                            href="#"
-                            className="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center text-white hover:bg-primary-700 transition-colors"
-                        >
-                            <Facebook size={18} />
-                        </a>
-                        <a
-                            href="#"
-                            className="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center text-white hover:bg-primary-700 transition-colors"
-                        >
-                            <Instagram size={18} />
-                        </a>
-                        <a
-                            href="#"
-                            className="w-9 h-9 rounded-full bg-primary-600 flex items-center justify-center text-white hover:bg-primary-700 transition-colors"
-                        >
-                            <Twitter size={18} />
-                        </a>
+                        <nav className="flex flex-wrap flex-col md:flex-row justify-center gap-8">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.path}
+                                    to={link.path}
+                                    className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
+
+                        <div className="flex items-center gap-3">
+                            <a
+                                href="#"
+                                className="w-8 h-8 rounded-full bg-[#A78BFA] flex items-center justify-center text-white hover:bg-[#8B5CF6] transition-colors"
+                            >
+                                <Facebook size={16} />
+                            </a>
+                            <a
+                                href="#"
+                                className="w-8 h-8 rounded-full bg-[#A78BFA] flex items-center justify-center text-white hover:bg-[#8B5CF6] transition-colors"
+                            >
+                                <Instagram size={16} />
+                            </a>
+                            <a
+                                href="#"
+                                className="w-8 h-8 rounded-full bg-[#A78BFA] flex items-center justify-center text-white hover:bg-[#8B5CF6] transition-colors"
+                            >
+                                <Twitter size={16} />
+                            </a>
+                        </div>
+
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-gray-100">
+
+                {/* Bottom Row: Links and Copyright */}
+                <div className="flex flex-col md:flex-row justify-between md:items-center items-start gap-4 pt-6 border-t border-gray-200">
                     <Link to="/privacy" className="text-sm text-gray-500 hover:text-gray-700">
                         Privacy Policy
                     </Link>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-500">
                         © 2023 Mugna Technologies, Inc.
                     </p>
                     <Link to="/terms" className="text-sm text-gray-500 hover:text-gray-700">
