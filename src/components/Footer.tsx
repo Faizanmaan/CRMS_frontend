@@ -19,10 +19,10 @@ const Footer = () => {
                     <div className="flex flex-col items-start gap-2">
                         <Link to="/" className="flex items-center gap-0.5">
                             <span className="text-2xl font-bold text-gray-800">swift</span>
-                            <span className="text-2xl font-bold text-[#8B5CF6]">CRM</span>
+                            <span className="text-2xl font-bold text-primary-600">CRM</span>
                         </Link>
 
-                        <p className="text-sm text-gray-600 text-center md:text-left">
+                        <p className="text-sm text-gray-600 text-start md:text-left">
                             Crafting Connections, One Customer at a Time.
                         </p>
                     </div>
@@ -45,19 +45,19 @@ const Footer = () => {
                         <div className="flex items-center gap-3">
                             <a
                                 href="#"
-                                className="w-8 h-8 rounded-full bg-[#A78BFA] flex items-center justify-center text-white hover:bg-[#8B5CF6] transition-colors"
+                                className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white transition-colors"
                             >
                                 <Facebook size={16} />
                             </a>
                             <a
                                 href="#"
-                                className="w-8 h-8 rounded-full bg-[#A78BFA] flex items-center justify-center text-white hover:bg-[#8B5CF6] transition-colors"
+                                className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white transition-colors"
                             >
                                 <Instagram size={16} />
                             </a>
                             <a
                                 href="#"
-                                className="w-8 h-8 rounded-full bg-[#A78BFA] flex items-center justify-center text-white hover:bg-[#8B5CF6] transition-colors"
+                                className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white transition-colors"
                             >
                                 <Twitter size={16} />
                             </a>

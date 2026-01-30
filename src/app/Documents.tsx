@@ -334,7 +334,7 @@ const Documents = () => {
                             </thead>
                             <tbody className="divide-y divide-gray-50">
                                 {filteredDocuments.map((doc) => (
-                                    <tr key={doc.id} className={`hover:bg-gray-50 transition-colors whitespace-nowrap ${selectedIds.includes(doc.id) ? 'bg-primary-50/30' : ''}`}>
+                                    <tr key={doc.id} className={`hover:bg-gray-50 transition-colors ${selectedIds.includes(doc.id) ? 'bg-primary-50/30' : ''}`}>
                                         <td className="py-4 px-6">
                                             <input
                                                 type="checkbox"
@@ -426,7 +426,7 @@ const Documents = () => {
                 </div>
             </div>
 
-            <div className="flex justify-end gap-3 mt-14">
+            <div className="flex justify-end gap-3 mt-6">
                 <button
                     onClick={openCreateModal}
                     className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors"

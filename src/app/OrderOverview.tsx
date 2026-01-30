@@ -41,6 +41,74 @@ interface CountryStat {
     isPositive: boolean;
 }
 
+// Country name to ISO 3166-1 alpha-2 code mapping
+const countryCodeMap: Record<string, string> = {
+    'United States': 'us',
+    'USA': 'us',
+    'United Kingdom': 'gb',
+    'UK': 'gb',
+    'Germany': 'de',
+    'France': 'fr',
+    'Italy': 'it',
+    'Spain': 'es',
+    'Canada': 'ca',
+    'Australia': 'au',
+    'Japan': 'jp',
+    'China': 'cn',
+    'India': 'in',
+    'Brazil': 'br',
+    'Mexico': 'mx',
+    'Russia': 'ru',
+    'South Korea': 'kr',
+    'Netherlands': 'nl',
+    'Switzerland': 'ch',
+    'Sweden': 'se',
+    'Norway': 'no',
+    'Denmark': 'dk',
+    'Finland': 'fi',
+    'Poland': 'pl',
+    'Belgium': 'be',
+    'Austria': 'at',
+    'Portugal': 'pt',
+    'Ireland': 'ie',
+    'New Zealand': 'nz',
+    'Singapore': 'sg',
+    'UAE': 'ae',
+    'United Arab Emirates': 'ae',
+    'Saudi Arabia': 'sa',
+    'Turkey': 'tr',
+    'Indonesia': 'id',
+    'Thailand': 'th',
+    'Malaysia': 'my',
+    'Philippines': 'ph',
+    'Vietnam': 'vn',
+    'Pakistan': 'pk',
+    'Bangladesh': 'bd',
+    'Egypt': 'eg',
+    'South Africa': 'za',
+    'Nigeria': 'ng',
+    'Kenya': 'ke',
+    'Argentina': 'ar',
+    'Chile': 'cl',
+    'Colombia': 'co',
+    'Peru': 'pe',
+    'Venezuela': 've',
+    'Greece': 'gr',
+    'Czech Republic': 'cz',
+    'Romania': 'ro',
+    'Hungary': 'hu',
+    'Ukraine': 'ua',
+    'Israel': 'il',
+    'Taiwan': 'tw',
+    'Hong Kong': 'hk',
+};
+
+// Helper function to get flag image URL
+const getFlagImageUrl = (countryName: string): string => {
+    const code = countryCodeMap[countryName] || 'un'; // 'un' for unknown/United Nations flag
+    return `https://flagcdn.com/w40/${code}.png`;
+};
+
 
 interface SalesHistory {
     date: string;
@@ -601,11 +669,20 @@ const OrderOverview = () => {
                                 <p className="text-center text-gray-500 text-sm py-4">No country data available.</p>
                             ) : (
                                 countryOrderStats.map((stat, index) => (
-                                    <div key={index} className="flex items-center justify-between group cursor-pointer hover:bg-gray-50 p-1 rounded-lg transition-colors">
+                                    <div key={index} className="flex items-center justify-between group cursor-pointer hover:bg-gray-50 p-2 rounded-lg transition-colors">
                                         <div className="flex items-center gap-3">
-                                            <span className="text-2xl shadow-sm rounded-full w-8 h-8 flex items-center justify-center bg-white border border-gray-100">
-                                                {stat.flag}
-                                            </span>
+                                            <div className="w-8 h-8 rounded-full overflow-hidden shadow-sm border border-gray-100 flex items-center justify-center bg-gray-50">
+                                                <img
+                                                    src={getFlagImageUrl(stat.country)}
+                                                    alt={`${stat.country} flag`}
+                                                    className="w-full h-full object-cover"
+                                                    onError={(e) => {
+                                                        // Fallback to emoji if image fails to load
+                                                        (e.target as HTMLImageElement).style.display = 'none';
+                                                        (e.target as HTMLImageElement).parentElement!.innerHTML = `<span class="text-lg">${stat.flag}</span>`;
+                                                    }}
+                                                />
+                                            </div>
                                             <span className="text-sm font-medium text-gray-700">{stat.country}</span>
                                         </div>
                                         <div className="flex items-center gap-4">

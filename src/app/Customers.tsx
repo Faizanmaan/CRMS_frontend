@@ -95,7 +95,7 @@ const Customers = () => {
     const nonMembers = totalCustomers - totalMembers;
 
     return (
-        <div className="p-4 sm:p-6 space-y-6">
+        <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <h1 className="text-xl sm:text-2xl font-bold text-gray-800">Customers</h1>
                 <div className="flex items-center gap-3 sm:gap-4">
@@ -268,7 +268,7 @@ const Customers = () => {
                 </div>
             </div>
 
-            <div className="">
+            <div>
                 <div className="mb-4">
                     <div className="flex items-center gap-4">
                         {selectedIds.length > 0 && (
@@ -340,32 +340,32 @@ const Customers = () => {
                     </table>
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start justify-between gap-4 p-4 sm:p-6">
                     <div className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
                         Showing <span className="font-medium">{(currentPage - 1) * itemsPerPage + 1}</span> to <span className="font-medium">{Math.min(currentPage * itemsPerPage, customers.length)}</span> of <span className="font-medium">{customers.length}</span> entries
                     </div>
-                    <div className="flex items-center gap-1 sm:gap-2">
+                    <div className="flex items-center">
                         <button
                             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                             disabled={currentPage === 1}
-                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50 disabled:opacity-50"
+                            className="w-8 h-8 flex items-center justify-center border rounded-l border-gray-300 text-primary-600 hover:bg-gray-50 disabled:opacity-50"
                         >
                             <ChevronLeft size={16} />
                         </button>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center">
                             {[...Array(totalPages)].map((_, i) => {
                                 // Show only a few pages on mobile
                                 if (totalPages > 5 && (i + 1 !== 1 && i + 1 !== totalPages && Math.abs(i + 1 - currentPage) > 1)) {
-                                    if (i + 1 === 2 || i + 1 === totalPages - 1) return <span key={i + 1} className="px-1 text-gray-400">...</span>;
+                                    if (i + 1 === 2 || i + 1 === totalPages - 1) return <span key={i + 1} className="w-8 h-8 flex items-center justify-center px-1 text-primary-600 border-gray-300 border">...</span>;
                                     return null;
                                 }
                                 return (
                                     <button
                                         key={i + 1}
                                         onClick={() => setCurrentPage(i + 1)}
-                                        className={`w-8 h-8 flex items-center justify-center rounded-lg text-xs sm:text-sm font-medium transition-colors ${currentPage === i + 1
+                                        className={`w-8 h-8 flex items-center justify-center text-xs sm:text-sm font-medium transition-colors ${currentPage === i + 1
                                             ? 'bg-primary-600 text-white'
-                                            : 'border border-gray-200 text-gray-600 hover:bg-gray-50'
+                                            : 'border border-gray-300 text-primary-600 hover:bg-gray-50'
                                             }`}
                                     >
                                         {i + 1}
@@ -376,7 +376,7 @@ const Customers = () => {
                         <button
                             onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                             disabled={currentPage === totalPages}
-                            className="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 text-gray-400 hover:bg-gray-50 disabled:opacity-50"
+                            className="w-8 h-8 flex items-center justify-center rounded-r border border-gray-300 text-primary-600 hover:bg-gray-50 disabled:opacity-50"
                         >
                             <ChevronRight size={16} />
                         </button>

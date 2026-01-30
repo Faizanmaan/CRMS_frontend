@@ -60,7 +60,7 @@ const Header = ({ title, showWelcome = false, hideSearch = false, hideDate = fal
                             <div className="relative">
                                 <button
                                     onClick={() => setShowDateDropdown(!showDateDropdown)}
-                                    className="flex items-center gap-1 px-2 py-2 bg-primary-100 text-primary-700 rounded-lg md:text-sm text-xs font-medium hover:bg-primary-200 transition-colors"
+                                    className="flex items-center gap-1 px-2 py-2 bg-primary-600 text-white rounded-lg md:text-sm text-xs font-medium hover:bg-primary-200 transition-colors"
                                 >
                                     <Calendar size={16} />
                                     {dateRange || 'Select Date'}

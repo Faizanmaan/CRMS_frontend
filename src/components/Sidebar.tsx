@@ -106,9 +106,9 @@ const Sidebar = () => {
     const SidebarContent = ({ onLinkClick }: { onLinkClick?: () => void }) => (
         <>
             <div className="p-6 pb-4">
-                <Link to={isCustomer() ? '/customer/dashboard' : '/'} className="flex items-center gap-1" onClick={onLinkClick}>
-                    <span className="text-xl font-bold text-primary-700">swift</span>
-                    <span className="text-xl font-bold text-gray-800">CRM</span>
+                <Link to={isCustomer() ? '/customer/dashboard' : '/'} className="flex items-center" onClick={onLinkClick}>
+                    <span className="text-xl font-bold text-gray-800">swift</span>
+                    <span className="text-xl font-bold text-primary-600">CRM</span>
                 </Link>
             </div>
 
@@ -364,7 +364,7 @@ const Sidebar = () => {
                 </nav>
             </aside>
 
-            <aside className="hidden md:block w-[220px] h-screen bg-white/80 backdrop-blur-sm border rounded-2xl border-gray-100 shadow-sm">
+            <aside className="hidden md:block w-[220px] bg-white/80 backdrop-blur-sm border rounded-2xl border-gray-100 shadow-sm">
                 <SidebarContent />
             </aside>
         </>
